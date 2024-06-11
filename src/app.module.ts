@@ -6,6 +6,8 @@ import { CalendarModule } from './calendar/calendar.module';
 import { MqttModule } from './mqtt/mqtt.module';
 import { DeviceModule } from './device/device.module';
 import { LoggerModule } from './logger/logger.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { TasksModule } from './task/task.module';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { LoggerModule } from './logger/logger.module';
     CalendarModule,
     MqttModule,
     LoggerModule,
+    TasksModule,
+    ScheduleModule.forRoot(),
   ],
 })
 export class AppModule {}

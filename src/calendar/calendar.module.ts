@@ -4,11 +4,15 @@ import { CalendarEntity } from './infrustructure/relational/entities/calendar.en
 import { CalendarRepository } from './infrustructure/relational/repositories/calendar.repository';
 import { CalendarService } from './calendar.service';
 import { CalendarController } from './calendar.controller';
-import { LoggerService } from 'src/logger/loger.service';
 import { LoggerModule } from 'src/logger/logger.module';
+import { TasksModule } from 'src/task/task.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([CalendarEntity]), LoggerModule],
+  imports: [
+    TypeOrmModule.forFeature([CalendarEntity]),
+    LoggerModule,
+    TasksModule,
+  ],
   controllers: [CalendarController],
   providers: [CalendarService, CalendarRepository],
   exports: [CalendarService],
