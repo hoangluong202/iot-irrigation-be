@@ -3,10 +3,13 @@ import { Injectable } from '@nestjs/common';
 import { CalendarRepository } from './infrustructure/relational/repositories/calendar.repository';
 import { CreateCalendarDto } from './dto/create-calendar.dto';
 import { CalendarEntity } from './infrustructure/relational/entities/calendar.entity';
-
+import { LoggerService } from 'src/logger/loger.service';
 @Injectable()
 export class CalendarService {
-  constructor(private readonly calendarRepository: CalendarRepository) {}
+  constructor(
+    private readonly calendarRepository: CalendarRepository,
+    private readonly loggerService: LoggerService,
+  ) {}
 
   findById(id: number): Promise<CalendarEntity> {
     return this.calendarRepository.findById(id);
@@ -28,6 +31,7 @@ export class CalendarService {
     const fertilizerMixerTime = (k + p + mg + h2o) * level;
     const duration = (fertilizerFlowTime + fertilizerMixerTime) * repeat;
     const endTime = moment(startTime).add(duration, 'seconds').toDate();
+
     const calendar: Omit<CalendarEntity, 'id'> = {
       ...createCalendarDto,
       duration: duration,

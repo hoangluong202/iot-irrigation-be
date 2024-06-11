@@ -4,9 +4,11 @@ import { CalendarEntity } from './infrustructure/relational/entities/calendar.en
 import { CalendarRepository } from './infrustructure/relational/repositories/calendar.repository';
 import { CalendarService } from './calendar.service';
 import { CalendarController } from './calendar.controller';
+import { LoggerService } from 'src/logger/loger.service';
+import { LoggerModule } from 'src/logger/logger.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([CalendarEntity])],
+  imports: [TypeOrmModule.forFeature([CalendarEntity]), LoggerModule],
   controllers: [CalendarController],
   providers: [CalendarService, CalendarRepository],
   exports: [CalendarService],

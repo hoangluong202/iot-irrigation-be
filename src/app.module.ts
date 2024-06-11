@@ -5,6 +5,7 @@ import { TypeOrmConfigService } from './database/config/typeorm';
 import { CalendarModule } from './calendar/calendar.module';
 import { MqttModule } from './mqtt/mqtt.module';
 import { DeviceModule } from './device/device.module';
+import { LoggerModule } from './logger/logger.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { DeviceModule } from './device/device.module';
     DeviceModule,
     CalendarModule,
     MqttModule,
+    LoggerModule,
   ],
 })
 export class AppModule {}
